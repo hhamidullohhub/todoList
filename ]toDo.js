@@ -43,7 +43,7 @@ button.addEventListener('click', () => {
 
 function deleteUser(id) {
     console.log(id)
-    const newUser = person.filter(person => person.id !== id)
-    person= [...newUser]
+    const newUser = peoples.filter(person => person.id !== id)
+    peoples = [...newUser]
     renderList()
 }
