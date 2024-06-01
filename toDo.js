@@ -15,6 +15,11 @@ function renderList() {
         newli.classList.add('li')
         deleteButton.textContent = 'delete'
 
+        newli.addEventListener('click', (e) => {
+            // e.target.style.textDecoration = 'line-through'
+            newli.style.textDecoration = 'line-through'
+        })
+
         deleteButton.setAttribute('onclick', `deleteUser(${el.id})`)
 
         newli.append(deleteButton)
