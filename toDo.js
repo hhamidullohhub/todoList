@@ -1,54 +1,127 @@
 const input = document.getElementById('input')
-const button = document.getElementById('button')
+const addButton = document.getElementById('button')
 const ul = document.getElementById('ul')
 let peoples = []
-
 
 function renderList() {
     ul.innerHTML = null
 
-    peoples.forEach((el) => {
+    peoples.forEach((person)=> {
         const newli = document.createElement('li')
         const deleteButton = document.createElement('button')
-
-        newli.textContent = el.name
+        const editUser = document.createElement('button')
+        
+        
+        newli.textContent = person.name
         newli.classList.add('li')
-        deleteButton.textContent = 'delete'
+        deleteButton.textContent = 'delete'  
+        editUser.textContent = 'edit'
 
-        newli.addEventListener('click', (e) => {
-            // e.target.style.textDecoration = 'line-through'
-            newli.style.textDecoration = 'line-through'
-        })
+        deleteButton.setAttribute('onclick',`deleteUser(${person.id})`)
+        editUser.setAttribute('onclick',`editUser(${person.id})`)
 
-        deleteButton.setAttribute('onclick', `deleteUser(${el.id})`)
-
-        newli.append(deleteButton)
+        newli.append(deleteButton,editUser)
         ul.prepend(newli)
 
+        input.value = ''
     })
-    input.value = ''
 }
 
-button.addEventListener('click', () => {
+
+addButton.addEventListener('click',()=> {
     const inputValue = input.value
 
-    if (inputValue == '') {
-        alert('qiymat kiriting')
-    } else {
-        const person = {
-            id: Date.now(),
-            name: inputValue
-        }
+    if(inputValue == '') {
+        alert('qiymatg kiritng')
+    }else {
+        const person ={
+            id:Date.now(),
+            name: inputValue}
 
-        peoples.push(person)
-        console.log(peoples);
-        renderList()
-    }
+
+            peoples.push(person)
+            console.log(peoples)
+        }
+        renderList() 
 })
 
 function deleteUser(id) {
-    console.log(id)
-    const newUser = peoples.filter(person => person.id !== id)
+    const newUser = peoples.filter(person => person.id  !== id)
     peoples = [...newUser]
     renderList()
 }
+
+function editUser(id) {
+    const editedName = prompt(`tahrir qilinmoqda`)
+    if(editedName == '') {
+        alert('qiymat kriiting')
+    }else {
+        const editedUser = peoples.map(item => {
+            if (item.id == id) {
+                return { ...item, name: editedName }
+            }
+            return item
+        })
+        peoples = [...editedUser]
+        renderList()
+    }
+    
+}
+
+
+// const input = document.getElementById('input')
+// const addButton = document.getElementById('button')
+// const 
+
+
+input.addEventListener('keypress', (event) => {
+    // console.log(event)
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission if the input is inside a form
+        button.click(); // Trigger the button click
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function isreadUser(id) {
+    
+//     if (index !== -1) {
+//         const updatedPerson = { ...peoples[index], isRead: !peoples[index].isRead };
+//         peoples.splice(index, 1, updatedPerson);
+//     }
+//     renderList();
+// }
+
+// let age = prompt('yoshingizni kiriting');
+// let canVote;
+
+// if (age >= 18) {
+//     canVote = true;
+//     console.log(canVote)
+// } else {
+//     canVote = false;
+//     console.log(canVote)
+// }
+
+
+/////------ Ternary operators-----------//////
+
+// let aGe = prompt('yoshingizni kiriting')
+// let can = aGe >= 18 ? true : false
+// console.log(can)
+
+

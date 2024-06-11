@@ -5,6 +5,12 @@
     list-style: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+body {
+    background-image: url(/img/Program-code-colorful-letters-screen_3840x2160.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(4px);
+}
 
 a {
     text-decoration: none;
@@ -13,10 +19,10 @@ a {
 
 .header {
     text-align: center;
-    background-color: rgb(255, 51, 51);
     padding: 50px;
 
     h1 {
+        font-size: 45px;
         color: #fff;
     }
 }
@@ -25,15 +31,21 @@ a {
     width: 100%;
     padding: 0px 20px;
     margin: 0 auto;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     .ul {
-        border: 1px solid gray;
+        // border: 1px solid gray;
+        background-color: white;
+        color: black;
     }
     .li {
+        display: flex;
         padding: 7px 50px;
         font-size: 20px;
-        border: 1px solid gray;
+        border: 1px solid blue;
+    }
+    .icon {
+        display: none;
     }
 }
 
@@ -58,4 +70,10 @@ a {
         background-color: rgb(166, 166, 166);
         color: #fff;
     }
+}
+
+.line {
+    text-decoration: line-through;
+    color: white;
+    background-color: gray;
 }
