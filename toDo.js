@@ -68,12 +68,6 @@ function editUser(id) {
     
 }
 
-
-// const input = document.getElementById('input')
-// const addButton = document.getElementById('button')
-// const 
-
-
 input.addEventListener('keypress', (event) => {
     // console.log(event)
     if (event.key === 'Enter') {
